@@ -83,7 +83,8 @@ public class FetchBook extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         values=new ArrayList<>();
-
+        
+        //Parse JSON to String
         try {
             //Arahkan ke object di API
             JSONObject jsonObject=new JSONObject(s);
