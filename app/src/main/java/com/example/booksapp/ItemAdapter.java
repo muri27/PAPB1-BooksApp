@@ -1,6 +1,7 @@
 package com.example.booksapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         ItemData data=values.get(position);
         holder.titleText.setText(data.itemTitle);;
         holder.authorText.setText(data.itemAuthor);;
+        //agar setiap item bisa diklik dibuat onclicklistener
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,DetailActivity.class);
+                //Proses Pengiriman data ke DetailActivity memakai putExtra
+                //krn sudah di parcel
+                intent.putExtra("DATA", data);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
